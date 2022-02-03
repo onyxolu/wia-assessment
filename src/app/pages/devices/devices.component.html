@@ -1,0 +1,53 @@
+
+<div class="row">
+    <app-breadcrumb></app-breadcrumb>
+    <app-loader *ngIf="isFetchingDevices"></app-loader>
+    <div class="col-md-12" *ngIf="!isFetchingDevices">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> Devices</h4>
+            <p class="card-category"> Here are the Devices available to you</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Product
+                  </th>
+                  <th>
+                    Type
+                  </th>
+                  <th class="text-right">
+                    Action
+                  </th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let device of devices">
+                    <td>
+                        {{device.name}}
+                    </td>
+                    <td>
+                        {{device?.product?.name}}
+                    </td>
+                    <td>
+                      {{ device?.type?.model }}
+                    </td>
+                    <td class="text-right">
+                      <!-- Edit -->
+                      <button class="btn btn-primary" (click)="onDeviceClick(device?.id)"> View Events</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+  </div>
+  

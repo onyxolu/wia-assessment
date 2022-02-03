@@ -1,0 +1,62 @@
+
+<div class="row">
+    <app-breadcrumb></app-breadcrumb>
+    <app-loader *ngIf="!lineChartData"></app-loader>
+    <div class="col-md-12" *ngIf="lineChartData">
+        <app-card title="Line Chart">
+          <canvas
+            baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+            type="line"
+            ></canvas>
+        </app-card>
+      </div>
+    <div class="col-md-12" *ngIf="lineChartData">
+        <div class="text-right">
+            <button class="btn btn-primary text-right" (click)="exportAsXLSX()"> Download Events</button>
+          </div>
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> Events</h4>
+            <p class="card-category"> Here are the Events available to you</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Data
+                  </th>
+                  <th class="text-right">
+                    Date
+                  </th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let event of events">
+                    <td>
+                        {{event.name}}
+                    </td>
+                    <td>
+                        {{event?.data}}
+                    </td>
+                    <td class="text-right">
+                      <!-- Edit -->
+                      {{event?.date}}
+                      <!-- <button class="btn btn-primary" (click)="onEventClick(event?.id)"> View Events</button> -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </div>

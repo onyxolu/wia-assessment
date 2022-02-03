@@ -1,0 +1,53 @@
+
+<div class="row">
+  <app-breadcrumb></app-breadcrumb>
+  <app-loader *ngIf="isFetchingSpaces"></app-loader>
+    <div class="col-md-12" *ngIf="!isFetchingSpaces">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> Spaces</h4>
+            <p class="card-category"> Here are the spaces available to you</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Location
+                  </th>
+                  <th>
+                    Type
+                  </th>
+                  <th class="text-right">
+                    Action
+                  </th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let space of spaces">
+                    <td>
+                        {{space.name}}
+                    </td>
+                    <td>
+                        {{space?.config?.location?.address}}
+                    </td>
+                    <td>
+                      {{ space?.config?.type?.name }}
+                    </td>
+                    <td class="text-right">
+                      <!-- Edit -->
+                      <button class="btn btn-primary" (click)="onSpaceClick(space?.id)"> View Devices</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+  
